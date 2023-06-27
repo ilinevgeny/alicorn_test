@@ -9,30 +9,28 @@ use pizza\IngredientCatalog;
 use pizza\Pizza;
 use pizza\PizzaCatalog;
 use pizza\Runner;
+
 class BTest extends TestCase
 {
 
-    function testExistsPizza()
-    {
+    function testExistsPizza() {
         $pizza = Runner::getCatalog()->getPizza('MacDac Pizza');
         self::assertEquals('MacDac Pizza',$pizza->getName());
     }
 
-    function testOrdering()
-    {
+    function testOrdering() {
         $pizza = Runner::getCatalog()->getPizza('MacDac Pizza');
         self::assertEquals('tomato, sausages, feta cheese', $pizza->getIngredientOrder());
         $pizza->ingredientOnTop('sausages');
         self::assertEquals('sausages, tomato, feta cheese', $pizza->getIngredientOrder());
     }
 
-    function testTotalPrice()
-    {
+    function testTotalPrice() {
         $pizza = Runner::getCatalog()->getPizza('MacDac Pizza');
 
         self::assertEquals(3.75, $pizza->getPrice());
         $pizza->removeIngredient('tomato');
-        //fwrite(STDERR, print_r($pizza, TRUE));
+        
         self::assertEquals(3, $pizza->getPrice());
     }
 }

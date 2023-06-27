@@ -1,6 +1,7 @@
 <?php
 
 namespace pizza;
+
 use pizza\PizzaCatalog;
 use pizza\IngredientCatalog;
 
@@ -20,4 +21,3 @@ class Runner
         return $catalog;
     }
 };
-
